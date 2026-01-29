@@ -28,17 +28,21 @@ def main():
             pet = '<(`O ◇O)>'
         elif bird_type == 'big':
             pet = '⋘(•`⊖´•)⋙'
-
+    elif pet_type == 'gio':
+        pet_base_name = 'gio'
+        pet = '𓀡'
     if not pet:
         print('No pet selected.')
         return
-
+quit
     print('this is your pet', pet)
 
     # Initialize pet status
     pet_happyness = 5
     pet_hunger = 3
     pet_satisfaction = 2
+    if pet_satisfaction <= 0:
+        pet_satisfaction = 0
     amount_of_food = 3
     if pet_hunger <= 0:
         pet_hunger = 0
@@ -48,10 +52,10 @@ def main():
     while True:
         # Death / runaway checks
         if pet_hunger >= 10:
-            print('your pet died of starvation')
+            print('your ',pet,' died of starvation')
             break
         if pet_happyness <= 0:
-            print('your pet is too sad and ran away')
+            print('your ',pet,' is too sad and ran away')
             break
 
         active_choice = input('would you like to feed, pet, walk, play, buy food, or quit with your ' + pet_base_name + '? ')
@@ -59,12 +63,19 @@ def main():
         if active_choice in ('quit', 'q', 'exit'):
             print('goodbye!')
             break
+        elif pet_type == 'gio' and active_choice in ('quit', 'q', 'exit'):
+            print('gio never lets you leave...')
+            continue 
 
         if active_choice == 'feed':
-            pet_hunger -= 2
-            pet_satisfaction -= 2
-            amount_of_food -= 1
-            print('you fed your pet')
+            if amount_of_food <= 0:
+                print('you have no food to feed your pet')
+                print('you chose to do nothing today')
+            else:
+                pet_hunger -= 2
+                pet_satisfaction -= 2
+                amount_of_food -= 1
+                print('you fed your pet')
         elif active_choice == 'pet':
             pet_happyness += 1
             pet_satisfaction += 1
