@@ -1,4 +1,8 @@
+import random
+import time
 def main():
+    glitch_chars = "!@#$%^&*()_+-=[]{}|;':,.<>/?~"
+
     print('hello welcome to my pet shop')
     pet = None
     pet_type = input('what type of pet do you want, a dog, a cat, a spider, or a bird ').strip().lower()
@@ -34,9 +38,26 @@ def main():
     if not pet:
         print('No pet selected.')
         return
-quit
-    print('this is your pet', pet)
-
+    quit
+    def run_glitch():
+        try:
+            while True:
+            # Pick a random character
+                char = random.choice(glitch_chars)
+                print(char, end='', flush=True)
+                time.sleep(0.1)  # Add a small delay for visual effect
+        except KeyboardInterrupt:  # Allow exit on Ctrl+C:
+            print('\nGlitch effect ended.')
+            
+    if pet_type != 'gio':
+        print('this is your pet', pet)
+    elif pet_type == 'gio':
+        while True:
+            glitch_string = ''.join(random.choice(glitch_chars) for _ in range(3))
+            print('this is', glitch_string,'he is your pet')
+            time.sleep(0.1)
+            if random.random() < 0.05:  # 5% chance to break the loop each iteration
+                break
     # Initialize pet status
     pet_happyness = 5
     pet_hunger = 3
@@ -46,8 +67,11 @@ quit
     amount_of_food = 3
     if pet_hunger <= 0:
         pet_hunger = 0
-    if amount_of_food <= 0:
+    if pet_type != 'gio' and amount_of_food <= 0:
         amount_of_food = 0
+    
+    
+
     # Interactive action loop
     while True:
         # Death / runaway checks
@@ -57,10 +81,24 @@ quit
         if pet_happyness <= 0:
             print('your ',pet,' is too sad and ran away')
             break
-
-        active_choice = input('would you like to feed, pet, walk, play, buy food, or quit with your ' + pet_base_name + '? ')
-
-        if active_choice in ('quit', 'q', 'exit'):
+        if pet_type == 'gio' and amount_of_food <= 0:
+            print(  glitch_string,'doent like not having food...')
+            print('gio ate you...')
+            break
+        while pet_type == 'gio' and pet_satisfaction <= 0:
+            print( glitch_string, 'is angry at you...')
+            if satisfaction_death_counter <= 0:
+                print(glitch_string, 'killed you for not taking care of him...')
+                break
+            break
+            
+            # this is unfinished code please revise and fix soon thx its about if satisfaction is 0 for gio you get one day to fix it or you lose
+        satisfaction_death_counter = 2
+            
+        
+        active_choice = input('would you like to feed, pet, walk, play, buy food, quit or kill your ' + pet_base_name + '? ')
+        satisfaction_death_counter -= 1 
+        if pet_type != 'gio' and active_choice in ('quit', 'q', 'exit'):
             print('goodbye!')
             break
         elif pet_type == 'gio' and active_choice in ('quit', 'q', 'exit'):
@@ -97,16 +135,26 @@ quit
             pet_satisfaction -= 3
             pet_hunger += 2
             pet_happyness -= 3
+        elif active_choice == 'kill':
+            print('you killed your pet')
+            print('you are a horrible person')
+        elif pet_type == 'gio':
+            print(glitch_string,'blocked your attack...')
+            print(glitch_string, 'is displeased with your actions...')
+            #this is where i want the new code for the boss fight in a different window 
+            
+            break
         else:
-            print('Unknown action. Try: feed, pet, walk, play, buy food, or quit')
+            print('Unknown action. Try: feed, pet, walk, play, buy food, quit, or kill')
             continue
-
+            
+            
         # Clamp values and display status
         pet_hunger = max(pet_hunger, 0)
         pet_happyness = max(pet_happyness, 0)
         print('happiness:', pet_happyness, 'hunger:', pet_hunger, 'satisfaction:', pet_satisfaction)
-
-
+        print('satisfaction death counter:', satisfaction_death_counter)
+        
 
 
 if __name__ == '__main__':

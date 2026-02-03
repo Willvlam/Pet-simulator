@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRITICAL ERROR: {{GLITCH_NAME}}</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="flash" class="damage-flash"></div>
+    <div class="ui-container">
+        <div class="stats-box">
+            <div>ENTITY: {{GLITCH_NAME}}</div>
+            <div class="bar-bg"><div id="hp-fill" class="bar-fill"></div></div>
+            <div>HP: <span id="hp-text">5000</span></div>
+        </div>
+        <div class="stats-box" style="border-color: #00ff00; color: #00ff00;">
+            <div>PLAYER.USER</div>
+            <div class="bar-bg" style="border-color: #00ff00;"><div id="player-fill" class="bar-fill"></div></div>
+            <div>INTEGRITY: <span id="p-text">100</span>%</div>
+        </div>
+    </div>
+    <div id="boss">𓀡</div>
+    <div>
+        <button class="btn" onclick="attack()">DELETION_PROTOCOL.EXE</button>
+    </div>
+    <div id="log">>> INITIALIZING SYSTEM DEFENSES...</div>
+    <script src="script.js"></script>
+</body>
+</html>
