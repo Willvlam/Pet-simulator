@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Pet Shop — Browser Edition</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .controls { margin-top: 12px; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+    #pet-display { font-size:48px; margin:12px 0; }
+    #log { height:160px; overflow-y:auto; padding:8px; border-top:1px solid #333; text-align:left; }
+    .hidden { display:none; }
+    .small { font-size:14px; color:#ddd; }
+    .btn { cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div style="width:800px; margin:30px auto; text-align:center;">
+    <h1 style="color:#ff6666">Pet Shop (Browser)</h1>
+
+    <div id="selector">
+      <label class="small">Choose a pet:</label>
+      <select id="pet-select">
+        <option value="dog">Dog</option>
+        <option value="cat">Cat</option>
+        <option value="spider">Spider</option>
+        <option value="bird">Bird</option>
+        <option value="gio">GIO (special)</option>
+      </select>
+      <button id="start-btn" class="btn">Start</button>
+    </div>
+
+    <div id="game" class="hidden">
+      <div id="pet-display">?</div>
+      <div id="status" class="small"></div>
+
+      <div class="controls">
+        <button id="feed" class="btn">feed</button>
+        <button id="pet" class="btn">pet</button>
+        <button id="walk" class="btn">walk</button>
+        <button id="play" class="btn">play</button>
+        <button id="buy" class="btn">buy food</button>
+        <button id="kill" class="btn" style="background:black;color:white">kill</button>
+        <button id="quit" class="btn">quit</button>
+      </div>
+
+      <div id="log">>> INITIALIZING...</div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
